@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Primeira Lei de Mendel</title>
+</head>
+<body>
+  <h1>Primeira Lei de Mendel</h1>
+  <p>Este programa simula a Primeira Lei de Mendel, que descreve como as características hereditárias são passadas de pais para filhos.</p>
+
+  <button onclick="simularMendel()">Simular Cruzamento</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function simularMendel() {
+      // Simulação em JavaScript (pode ser substituída pela saída do programa em C#)
+      const pai = { alelo1: Math.random() < 0.5 ? 'A' : 'a', alelo2: Math.random() < 0.5 ? 'A' : 'a' };
+      const mae = { alelo1: Math.random() < 0.5 ? 'A' : 'a', alelo2: Math.random() < 0.5 ? 'A' : 'a' };
+
+      const filhos = [];
+      for (let i = 0; i < 4; i++) {
+        const filho = {
+          alelo1: Math.random() < 0.5 ? pai.alelo1 : pai.alelo2,
+          alelo2: Math.random() < 0.5 ? mae.alelo1 : mae.alelo2,
+        };
+        filhos.push(filho);
+      }
+
+      // Exibição dos resultados
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = `
+        <p>Genótipo do pai: ${pai.alelo1}${pai.alelo2}</p>
+        <p>Genótipo da mãe: ${mae.alelo1}${mae.alelo2}</p>
+        <p>Possíveis genótipos dos filhos:</p>
+        <ul>
+          ${filhos.map((filho, i) => `<li>Filho ${i + 1}: ${filho.alelo1}${filho.alelo2} (Fenótipo: ${filho.alelo1 === 'A' || filho.alelo2 === 'A' ? 'A' : 'a'})</li>`).join('')}
+        </ul>
+      `;
+    }
+  </script>
+</body>
+</html>
